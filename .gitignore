@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+
+# generated metric stores
+**/data/*.metrics.json
+
+# generated decks
+*.pptx
+
+# OS / editor
+.DS_Store
+Thumbs.db

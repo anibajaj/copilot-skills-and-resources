@@ -1,0 +1,155 @@
+{
+  "product": "Acme Cloud",
+  "period": "May 2026",
+  "confidential": true,
+  "theme": {
+    "primary": "0F6CBD",
+    "accent": "00B7C3"
+  },
+  "sources": [
+    { "name": "Product Analytics", "url": "https://analytics.example.com/acme" }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Acme Cloud",
+      "subtitle": "May 2026 · Monthly Telemetry",
+      "footnote": "Prepared for the monthly product review"
+    },
+    {
+      "type": "summary",
+      "label": "Executive Summary",
+      "title": "Executive Summary — May 2026",
+      "body": "Adoption continued its steady climb this month, with the customer base growing and engagement deepening across the active user base. Product quality held above target and user satisfaction improved on the back of the latest release.",
+      "highlights": [
+        { "value": "3,963", "label": "Total customers" },
+        { "value": "61,344", "label": "Monthly active users" },
+        { "value": "89.1", "unit": "%", "label": "Satisfaction" },
+        { "value": "72", "unit": "%", "label": "Product quality (F1)" }
+      ],
+      "bullets": [
+        "Customer base up ~4% month over month",
+        "Engagement reached a new high for the year",
+        "Satisfaction recovered above 89% after the April release"
+      ]
+    },
+    {
+      "type": "metrics",
+      "label": "Reach & Adoption",
+      "title": "Customer Reach & Adoption",
+      "cards": [
+        { "title": "Total customers", "value": "3,963", "series": [
+          { "month": "Mar", "value": 3670 }, { "month": "Apr", "value": 3812 }, { "month": "May", "value": 3963 } ] },
+        { "title": "Customers on premium plan", "value": "1,204", "series": [
+          { "month": "Mar", "value": 1050 }, { "month": "Apr", "value": 1130 }, { "month": "May", "value": 1204 } ] },
+        { "title": "Eligible customers", "value": "5,210", "sub": "Addressable base" }
+      ]
+    },
+    {
+      "type": "pies",
+      "label": "Reach & Adoption",
+      "title": "Customer Mix",
+      "charts": [
+        { "title": "Customers by plan", "unit": "customers", "breakdown": [
+          { "name": "Free", "value": 2100 }, { "name": "Pro", "value": 1204 }, { "name": "Enterprise", "value": 659 } ] },
+        { "title": "Customers by region", "unit": "customers", "breakdown": [
+          { "name": "Americas", "value": 1800 }, { "name": "EMEA", "value": 1400 }, { "name": "APAC", "value": 763 } ] }
+      ]
+    },
+    {
+      "type": "hero-list",
+      "label": "Customer Health",
+      "title": "Healthy Customers",
+      "hero": { "value": "146", "label": "Healthy customers", "sub": ">80% coverage, >1k active users" },
+      "secondary": { "value": "72,000", "label": "Users represented" },
+      "list": {
+        "columns": ["#", "Customer", "Eligible", "Active", "Coverage"],
+        "rows": [
+          ["1", "Northwind", "12,000", "10,400", "87%"],
+          ["2", "Contoso", "9,500", "8,100", "85%"],
+          ["3", "Fabrikam", "7,200", "6,000", "83%"],
+          ["4", "Tailwind", "6,800", "5,500", "81%"]
+        ]
+      }
+    },
+    {
+      "type": "trends",
+      "label": "User Engagement",
+      "title": "Active Users",
+      "charts": [
+        { "title": "Monthly active users", "series": [
+          { "month": "Mar", "value": 54000 }, { "month": "Apr", "value": 58200 }, { "month": "May", "value": 61344 } ] },
+        { "title": "Returning users", "series": [
+          { "month": "Mar", "value": 31000 }, { "month": "Apr", "value": 33500 }, { "month": "May", "value": 36200 } ] }
+      ]
+    },
+    {
+      "type": "trends",
+      "label": "Product Quality",
+      "title": "Quality of Output",
+      "charts": [
+        { "title": "Accuracy (F1)", "unit": "%", "series": [
+          { "month": "Mar", "value": 68 }, { "month": "Apr", "value": 70 }, { "month": "May", "value": 72 } ] },
+        { "title": "Precision", "unit": "%", "series": [
+          { "month": "Mar", "value": 74 }, { "month": "Apr", "value": 76 }, { "month": "May", "value": 78 } ] },
+        { "title": "Recall", "unit": "%", "series": [
+          { "month": "Mar", "value": 63 }, { "month": "Apr", "value": 65 }, { "month": "May", "value": 67 } ] }
+      ]
+    },
+    {
+      "type": "table",
+      "label": "Value Realized",
+      "title": "Top Movers — Customers Gaining Value",
+      "columns": ["Customer", "Prev", "Current", "Δ"],
+      "rows": [
+        ["Northwind", "4,200", "5,100", "+900"],
+        ["Contoso", "3,100", "3,700", "+600"],
+        ["Fabrikam", "2,500", "2,950", "+450"]
+      ],
+      "note": "Ranked by month-over-month increase in users reaching a value event."
+    },
+    {
+      "type": "metrics",
+      "label": "User Satisfaction & Feedback",
+      "title": "How Users Feel",
+      "cards": [
+        { "title": "Satisfaction score", "value": "89.1", "unit": "%", "series": [
+          { "month": "Mar", "value": 86.5 }, { "month": "Apr", "value": 87.2 }, { "month": "May", "value": 89.1 } ] },
+        { "title": "Positive responses", "value": "1,124", "sub": "Thumbs up" },
+        { "title": "Negative responses", "value": "137", "sub": "Thumbs down" },
+        { "title": "Total responses", "value": "1,261", "sub": "This month" }
+      ]
+    },
+    {
+      "type": "metrics",
+      "label": "Operational & Business Health",
+      "title": "Running the Product",
+      "cards": [
+        { "title": "Reliability index", "value": "96", "unit": "%", "series": [
+          { "month": "Mar", "value": 95 }, { "month": "Apr", "value": 95.5 }, { "month": "May", "value": 96 } ] },
+        { "title": "Engineering quality bar", "value": "100", "unit": "%", "sub": "Target: 100%" },
+        { "title": "Unit cost", "value": "$0.42", "sub": "Per active user / mo" }
+      ]
+    },
+    {
+      "type": "bullets",
+      "label": "Milestones",
+      "title": "Key Events — May 2026",
+      "items": [],
+      "note": "Always filled manually — never auto-pulled."
+    },
+    {
+      "type": "definitions",
+      "label": "Appendix",
+      "title": "Definitions",
+      "groups": [
+        { "heading": "Engagement", "items": [
+          { "term": "Monthly active users", "def": "Distinct users with at least one meaningful action in the month." },
+          { "term": "Returning users", "def": "Users active this month who were also active in a prior month." } ] },
+        { "heading": "Quality", "items": [
+          { "term": "F1", "def": "Harmonic mean of precision and recall." },
+          { "term": "Coverage", "def": "Share of eligible users who have the capability enabled." } ] }
+      ]
+    }
+  ]
+}
