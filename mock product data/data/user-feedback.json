@@ -1,5 +1,5 @@
 {
-  "_comment": "DEMO evidence — a stand-in export of user feedback (survey verbatims + NPS follow-ups) for June 2026. Headline KPIs are coherent with the telemetry deck (NPS 47, 3,910 promoters, 640 detractors, 6,120 total responses). Verbatims are illustrative. An unbiased reviewer reading these — alongside the diagnostics and personas — should notice a recurring theme in the critical feedback: reps see their pipeline but find updating the CRM too cumbersome to do while they are on calls / in the field.",
+  "_comment": "DEMO stand-in export of user feedback (survey verbatims + NPS follow-ups) for June 2026. Verbatims are illustrative.",
   "product": "HeroForce",
   "period": "June 2026",
   "source": "In-app NPS survey + post-session feedback prompts",
@@ -26,8 +26,7 @@
       "I only update at the end of the week / end of day": 96,
       "Data entry feels like admin, not selling": 88,
       "Too many fields to fill to update a deal": 47
-    },
-    "note": "The single largest critical theme (268 mentions) is that updating/logging is too cumbersome to do while reps are actively selling — they can SEE their deals but don't want to stop to update them. Navigation, search, and 'can't find my deals' are NOT meaningful themes in the critical set."
+    }
   },
   "positiveVerbatims": [
     { "id": 1042, "role": "Sales Rep", "account": "Atlas Freight", "rating": 9, "text": "AI Assist cut my prep time in half — I close more deals in a day than I used to in three." },
@@ -44,10 +43,5 @@
     { "id": 1379, "role": "Account Executive", "account": "Everline Media", "rating": 6, "text": "I look at my deals every single morning. But logging activity is 8 clicks and 5 fields — I batch it Sunday night or just don't." },
     { "id": 1388, "role": "SMB Sales Rep", "account": "Proseware", "rating": 5, "text": "I sell, I don't do data entry. If AI Assist could just write the update from my call and let me tap 'yes', I'd actually keep the CRM current." },
     { "id": 1402, "role": "Field Account Executive", "account": "Atlas Freight", "rating": 7, "text": "Nothing wrong with finding my deals — they're right there when I log in. It's that updating them mid-day is a hassle when you're never at a desk." }
-  ],
-  "reviewerHints": {
-    "_comment": "NOT labels the demo should read aloud — these are here so an analyzing agent's independent read is reproducible.",
-    "whatThePositivesShow": "Reps like the product and value AI Assist and pipeline visibility — consistent with the deck's NPS 47 and AI Assist adoption. This rules OUT broad dissatisfaction or a navigation/findability problem.",
-    "whatTheCriticalsShow": "Critical feedback is not 'I can't find my deals' or 'the app is confusing'. It is uniformly 'I can SEE my deals but updating them while selling is too cumbersome'. This matches the funnel: Step 2 (viewed) is high; Step 3 (updated) is where reps fall off."
-  }
+  ]
 }

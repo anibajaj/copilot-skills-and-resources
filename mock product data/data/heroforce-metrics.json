@@ -1,5 +1,5 @@
 {
-  "_comment": "Self-contained metrics export for HeroForce, June 2026. Contains every number in the telemetry deck as a monthly series, plus month-over-month change, an explicit watchlist of declining signals, and the daily activation funnel. An external skill can read `watchlist` and `dailyActivationFunnel` to detect the drop-offs without any other context. Figures are coherent with 'HeroForce Telemetry - June 2026'.",
+  "_comment": "Self-contained metrics export for HeroForce, June 2026: each metric as a monthly series with month-over-month change, a watchlist of metrics declining this period, and the daily activation funnel.",
   "product": "HeroForce",
   "period": "June 2026",
   "currentMonth": "2026-06",
@@ -489,7 +489,7 @@
   "dailyActivationFunnel": {
     "title": "Daily activation funnel (drop-off by step)",
     "basis": "Daily active users, June 2026",
-    "note2": "View vs. do. Step 2 = the rep saw their deals (an impression). Step 3 = the rep actually updated something (logged activity, advanced a stage, updated an account). Reps reach and view their work fine; the fall is that they look but don't log.",
+    "note": "Step 2 = the rep viewed their deals (an impression). Step 3 = the rep updated something (logged activity, advanced a stage, or updated an account).",
     "stages": [
       {
         "stage": 1,
@@ -520,12 +520,10 @@
         "dropFromPrev": 11
       }
     ],
-    "biggestDropStage": 3,
-    "note": "Largest single-step fall is Step 2 -> Step 3 — 74.1k viewed their deals but only 47.3k updated anything (a 36% drop). Reps see their work fine; they just don't log it. Evidence (feedback + personas) points to field/phone reps who are on calls all day and find updating the CRM too cumbersome to do mid-call, so the write slips to 'later' and often never happens."
+    "biggestDropStage": 3
   },
   "notes": {
-    "howToReadWatchlist": "Each entry is a metric moving the wrong way month-over-month. 'Daily active users' and 'Net revenue retention' are declining this period.",
-    "howToReadFunnel": "dailyActivationFunnel.stages is a monotonic drop-off. The biggest single-step fall is Step 2 -> Step 3 (viewed their deals -> took a meaningful action): reps see their pipeline but don't update it. See biggestDropStage.",
-    "relatedEvidence": "product/data/ (user-feedback.json, diagnostics.md, 'user research data/') explains WHY the Step 2->3 drop happens: field/phone reps on calls all day find updating too cumbersome to do live."
+    "howToReadWatchlist": "Each entry is a metric moving down month-over-month (declines of at least 1%).",
+    "howToReadFunnel": "dailyActivationFunnel.stages lists each daily step with its user count, percent of logins, and the drop from the previous step. biggestDropStage marks the largest single-step fall."
   }
 }

@@ -1,7 +1,6 @@
 # User Profile — Marcus Bell
 
-> DEMO persona. One of several rep profiles assembled to understand the daily-activation
-> drop. Illustrative, but consistent with the HeroForce telemetry deck and feedback data.
+> DEMO persona — an illustrative HeroForce user-research profile.
 
 | | |
 |---|---|
@@ -28,12 +27,9 @@ Friday afternoon — and about half the time he actually does.
 > call summary into all those fields while I'm walking into the next one. I do it Friday,
 > if I remember."
 
-## What his case tells us
-- **Views daily, updates weekly (at best).** He clears Step 2 every day and Step 3 maybe
-  once a week. Textbook view→do gap.
-- **Rules out "can't find his deals":** he's a 4-year power user who navigates instantly.
-  Findability/navigation is not his problem.
-- **Rules out "new user / mix shift":** established, high-performing, fully onboarded — and
-  still doesn't update live.
-- **Rules out "empty pipeline":** he has a large active book he's actively selling into.
-- **Points to D:** field seller, phone-only during the day, updating is deferred admin.
+## Observations
+- Opens HeroForce on his phone 3–4 times a day to see which deals are heating up; almost
+  never at a desk during working hours.
+- Doesn't update anything while he's out — defers logging to Friday, and follows through
+  about half the time.
+- Would benefit from fast, mobile-friendly logging he can do between visits.

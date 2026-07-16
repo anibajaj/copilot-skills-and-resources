@@ -1,7 +1,6 @@
 # User Profile — Priya Nair
 
-> DEMO persona. One of several rep profiles assembled to understand the daily-activation
-> drop. Illustrative, but consistent with the HeroForce telemetry deck and feedback data.
+> DEMO persona — an illustrative HeroForce user-research profile.
 
 | | |
 |---|---|
@@ -27,12 +26,10 @@ drained and the backlog is 50 calls deep.
 > "I'm on back-to-back calls. I can glance at the deal while I'm dialing, but stopping to
 > log every call and update the stage? No time. It piles up."
 
-## What her case tells us
-- **Extreme view→do gap driven by call volume.** She's in the top quartile of daily calls
-  and near the bottom for update-after-view — exactly the correlation in `diagnostics.md`.
-- **Rules out navigation/findability:** she has the record open constantly; she sees
-  everything. The blocker is purely the cost of *writing*.
-- **Rules out "no work to do":** she has more deals than she can call.
-- **Points to D:** on calls all day; logging competes directly with selling time and loses.
-- **Design signal:** wants logging that takes *seconds, not minutes* — ideally auto-drafted
-  from the call so she just confirms.
+## Observations
+- Keeps a deal record open on a second monitor and glances at it dozens of times a day
+  while dialing.
+- Back-to-back calls leave no time to log; the update backlog piles up and often isn't
+  cleared by end of day.
+- Wants logging that takes seconds, not minutes — ideally auto-drafted from the call so
+  she just confirms.

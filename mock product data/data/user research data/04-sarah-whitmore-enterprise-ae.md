@@ -1,7 +1,6 @@
 # User Profile — Sarah Whitmore
 
-> DEMO persona. One of several rep profiles assembled to understand the daily-activation
-> drop. Illustrative, but consistent with the HeroForce telemetry deck and feedback data.
+> DEMO persona — an illustrative HeroForce user-research profile.
 
 | | |
 |---|---|
@@ -27,11 +26,9 @@ go stale even though she's actively working them.
 > "The app is great for seeing what's next. Updating it is the problem — it feels like
 > paperwork I do after hours, not something I can do live."
 
-## What her case tells us
-- **Veteran, top-segment, still view-only most days.** Directly undercuts "mix shift / new
-  users" — she's as tenured and skilled as they come, and still falls in the Step 2→3 gap.
-- **Rules out navigation and supply:** she finds everything instantly and has active,
-  valuable deals.
-- **Explains the Sunday-evening update spike** in `diagnostics.md` (updates cluster after
-  hours / weekends).
-- **Points to D:** in meetings all day; updating is deferred "paperwork," batched or dropped.
+## Observations
+- Opens HeroForce every morning and between meetings to review deal status and check what
+  AI Assist flagged.
+- Doesn't update live during dense, confidential meetings; batches everything into a
+  Sunday-evening "CRM hygiene" block that sometimes gets skipped, leaving deals stale.
+- A daily viewer, infrequent updater.

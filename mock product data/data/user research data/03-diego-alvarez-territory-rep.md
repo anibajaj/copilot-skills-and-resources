@@ -1,7 +1,6 @@
 # User Profile — Diego Alvarez
 
-> DEMO persona. One of several rep profiles assembled to understand the daily-activation
-> drop. Illustrative, but consistent with the HeroForce telemetry deck and feedback data.
+> DEMO persona — an illustrative HeroForce user-research profile.
 
 | | |
 |---|---|
@@ -27,11 +26,8 @@ and by then he's forgotten the details.
 > "I'm in my car or at client sites most of the day. I open HeroForce to see my pipeline,
 > but I can't safely update a deal from the road. Give me a voice note and be done."
 
-## What his case tells us
-- **Views daily on mobile, updates rarely.** He's part of the 71% mobile share among
-  view-but-don't-update sessions in `diagnostics.md`.
-- **Rules out findability & supply:** he navigates fine and has an active territory.
-- **Rules out AI-Assist-layout theory:** his behavior is identical before and after the
-  May 15 launch — he was a view-only daily user then too.
-- **Points to D — and to the fix:** explicitly asks for **voice logging**. A hands-free /
-  voice update is the affordance that would move him from Step 2 to Step 3.
+## Observations
+- Mobile-only during the day; checks his pipeline from the car before each client visit.
+- Can't safely update from the road; the only realistic window is late at night, by which
+  point he's forgotten the details.
+- Explicitly asks for hands-free / voice logging.
