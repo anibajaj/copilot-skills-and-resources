@@ -39,4 +39,9 @@ folder, and documented with both a `SKILL.md` (agent protocol) and a `README.md`
 
 ## License
 
-[MIT](./LICENSE) — free to use, modify, and share.
+Licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](./LICENSE).
+You're free to share and adapt this material for any purpose, including commercially,
+as long as you give appropriate credit.
+
+© 2026 anibajaj. Please attribute as: "copilot-skills-and-resources by anibajaj,
+licensed under CC BY 4.0."

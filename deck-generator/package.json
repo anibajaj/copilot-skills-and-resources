@@ -2,7 +2,7 @@
   "name": "deck-generator",
   "version": "1.0.0",
   "description": "Product-neutral monthly telemetry / growth deck generator. Turns any product's dashboard metrics into a clean, config-driven .pptx.",
-  "license": "MIT",
+  "license": "CC-BY-4.0",
   "scripts": {
     "example": "node generate-deck.js examples/deck-config.example.json \"Acme Cloud Telemetry - May 2026.pptx\""
   },
