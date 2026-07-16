@@ -21,7 +21,7 @@ renderer, any product. All fields are optional unless noted.
 
 ### theme (all optional, hex without `#`)
 `primary`, `accent`, `dark`, `white`, `lightBg`, `medGrey`, `green`, `red`,
-`amber`, `purple`, `cardTint`, `font`. Defaults are a Microsoft Fluent palette
+`amber`, `purple`, `cardTint`, `font`. Defaults are a Fluent-style palette
 with Segoe UI.
 
 ## Shared fields on every slide block

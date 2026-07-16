@@ -26,20 +26,21 @@ Plus a narrative closer:
 
 | — | **Milestones & Narrative** | What happened / what's next? | Key events, launches, upcoming work — **always filled manually, never auto-pulled** |
 
-## How the People Skills deck maps onto this (worked example)
+## Worked example: translating product-specific metrics (fictional)
 
-This is the abstraction that drove the generic skill. Left column = the specific,
-product-coupled metric; right column = the generic dimension we present it under.
+The whole point of the skill is this abstraction. Left column = a specific,
+product-coupled metric name as it appears in some raw dashboard; right column = the
+generic dimension we present it under. (Example uses a fictional CRM product.)
 
 | Original (product-specific) metric | Generic dimension |
 |---|---|
-| Total tenants, Copilot tenants, ESES tenants, tenants by license/library type | **1. Reach & Adoption** |
-| Healthy tenants, coverage %, top-10 tenants | **2. Customer Health / Depth** |
-| LPC/LPE visitors & MAU | **3. User Engagement** |
-| Inferencing F1 / precision / recall | **4. Product Quality** |
-| SLR engaged tenants, active people, benefitted tenants | **5. Value Realized** |
-| OCV CSAT, thumbs up/down, responses | **6. User Satisfaction & Feedback** |
-| SFI, QEI, COGS | **7. Operational & Business Health** |
+| Total accounts, paying accounts, accounts by plan/edition | **1. Reach & Adoption** |
+| Thriving accounts, seat-activation coverage %, top-10 accounts | **2. Customer Health / Depth** |
+| Portal visitors & monthly active users | **3. User Engagement** |
+| Suggestion accuracy / precision / recall | **4. Product Quality** |
+| Accounts reaching first value, active seats, benefitting accounts | **5. Value Realized** |
+| Survey CSAT, thumbs up/down, total responses | **6. User Satisfaction & Feedback** |
+| Security score, engineering quality index, cost of goods sold | **7. Operational & Business Health** |
 | Key events | **Milestones & Narrative** (manual) |
 
 ## Using it in the interview

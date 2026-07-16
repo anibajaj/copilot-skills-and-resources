@@ -10,10 +10,10 @@
  * Slide block types: title | summary | metrics | hero-list | pies | table |
  *                    trends | bullets | definitions
  *
- * Design language carried over from the People Skills deck: accent top bar,
- * primary left bar, section label + title, white KPI cards with soft shadow,
- * avg month-over-month trend badges, custom bar charts for trends, native pie
- * charts for breakdowns, footer with product | period | page.
+ * Design language: accent top bar, primary left bar, section label + title,
+ * white KPI cards with soft shadow, avg month-over-month trend badges, custom bar
+ * charts for trends, native pie charts for breakdowns, footer with product |
+ * period | page.
  */
 
 const pptxgen = require("pptxgenjs");
