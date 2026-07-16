@@ -22,6 +22,7 @@ vocabulary.
 | Skill | What it does |
 |-------|--------------|
 | [`deck-generator/`](./deck-generator/) | Turn any product's telemetry into a clean, executive **monthly growth/telemetry deck** (`.pptx`). Interactive on first run: introduces itself, asks which dashboards/data sources to pull from, helps pick metrics through a universal product-growth lens, then renders a config-driven deck. |
+| [`feature-thinking-partner/`](./feature-thinking-partner/) | An interactive **product thinking partner** that takes a rough feature idea through problem framing, evidence, impact sizing, solution options, user-flow design, and prioritized requirements — then produces an annotated clickable **HTML prototype** and a detailed **Word PRD**. |
 
 ## Using a skill
 
