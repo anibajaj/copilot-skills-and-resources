@@ -25,6 +25,12 @@ node generate-deck.js examples/deck-config.example.json "Acme Cloud Telemetry - 
 
 See [`deck-generator/README.md`](./deck-generator/README.md) for full details.
 
+## Resources
+
+| Resource | What it is |
+|----------|------------|
+| [`mock product data/`](./mock%20product%20data/) | A complete, realistic **mock product dataset** for a fictional B2B SaaS CRM ("HeroForce"). Includes a product-context briefing, an app mockup + screenshot, monthly metrics, user feedback, and user-research personas — all internally coherent. Handy for testing or demoing any skill (like the deck generator) without touching real product data. |
+
 ## Contributing
 
 New skills are welcome. Keep them **product-neutral**, self-contained in their own

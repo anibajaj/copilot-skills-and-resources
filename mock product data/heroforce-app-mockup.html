@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HeroForce</title>
+<style>
+  :root{
+    --blue:#1B4DB3; --blue-d:#153c8c; --teal:#00B4A6; --purple:#6B4EFF;
+    --ink:#1a2130; --grey:#5b6472; --line:#e4e8ef; --bg:#f4f6fb; --white:#fff;
+    --amber:#E8A400; --red:#D64545; --green:#1E9E62;
+    --shadow:0 1px 3px rgba(20,40,90,.08),0 6px 18px rgba(20,40,90,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.45}
+
+  .app{display:grid;grid-template-columns:220px 1fr;height:100vh;background:var(--white)}
+
+  /* sidebar */
+  .side{background:var(--ink);color:#c7cede;padding:16px 12px;display:flex;flex-direction:column}
+  .brand{display:flex;align-items:center;gap:10px;padding:6px 8px 20px;color:#fff}
+  .logo{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--teal));
+    display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff}
+  .brand b{font-size:17px;letter-spacing:-.3px}
+  .nav{display:flex;flex-direction:column;gap:2px;margin-top:4px}
+  .nav a{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:9px;
+    color:#c7cede;text-decoration:none;font-size:14px;font-weight:500;cursor:pointer}
+  .nav a .i{width:18px;text-align:center;opacity:.85}
+  .nav a:hover{background:rgba(255,255,255,.06);color:#fff}
+  .nav a.on{background:var(--blue);color:#fff}
+  .side .foot{margin-top:auto;font-size:11.5px;color:#7a8399;padding:12px 8px;
+    border-top:1px solid rgba(255,255,255,.08)}
+
+  /* main */
+  .main{display:flex;flex-direction:column;min-width:0;height:100vh}
+  .topbar{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);flex:none}
+  .search{flex:1;position:relative;max-width:600px}
+  .search input{width:100%;padding:11px 14px 11px 42px;border:1.5px solid var(--line);border-radius:10px;
+    font-size:14px;background:var(--bg)}
+  .search input:focus{outline:none;border-color:var(--blue);background:#fff}
+  .search .mag{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--grey);font-size:15px}
+  .topact{margin-left:auto;display:flex;align-items:center;gap:16px}
+  .topact .ic{color:var(--grey);font-size:17px;cursor:pointer}
+  .who{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--grey)}
+  .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue));
+    color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+
+  .scroll{overflow:auto;padding:24px;flex:1}
+  .content{display:grid;grid-template-columns:1fr 320px;gap:20px;max-width:1180px}
+  .col{display:flex;flex-direction:column;gap:18px;min-width:0}
+
+  .greet{margin-bottom:2px}
+  .greet h1{font-size:22px;letter-spacing:-.4px}
+  .greet p{color:var(--grey);font-size:13.5px;margin-top:2px}
+
+  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+  .card h3{font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--grey);margin-bottom:14px;
+    display:flex;justify-content:space-between;align-items:center}
+  .card h3 a{font-size:12px;color:var(--blue);text-transform:none;letter-spacing:0;font-weight:600;cursor:pointer}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .kpi{background:var(--bg);border-radius:11px;padding:14px}
+  .kpi .v{font-size:23px;font-weight:800;letter-spacing:-.6px}
+  .kpi .l{font-size:12px;color:var(--grey);margin-top:2px}
+
+  /* pipeline board */
+  .board{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+  .lane{background:var(--bg);border-radius:11px;padding:10px;min-height:220px}
+  .lane .lh{font-size:11px;font-weight:700;color:var(--grey);text-transform:uppercase;
+    letter-spacing:.4px;display:flex;justify-content:space-between;margin-bottom:9px;padding:0 2px}
+  .deal{background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px;margin-bottom:8px;
+    font-size:12px;box-shadow:0 1px 2px rgba(20,40,90,.05);cursor:pointer;transition:.12s}
+  .deal:hover{border-color:var(--blue);transform:translateY(-1px)}
+  .deal b{display:block;font-size:12.5px;margin-bottom:2px}
+  .deal .co{color:var(--grey);font-size:11px}
+  .deal .amt{color:var(--teal);font-weight:700;font-size:12.5px;display:block;margin-top:5px}
+
+  /* activity */
+  .tasklist{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .tasklist li{display:flex;gap:11px;font-size:13.5px;align-items:flex-start}
+  .tasklist .chk{width:17px;height:17px;border:1.5px solid var(--line);border-radius:5px;margin-top:1px;
+    flex:none;cursor:pointer}
+  .tasklist small{color:var(--grey);display:block;font-size:11.5px;margin-top:1px}
+
+  /* AI assist panel */
+  .ai{background:linear-gradient(160deg,#f3f1ff,#eef6ff);border:1px solid #dfe0ff;position:relative}
+  .ai h3{color:var(--purple)}
+  .ai .badge{background:var(--purple);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;
+    border-radius:20px;letter-spacing:.3px}
+  .sugg{background:#fff;border:1px solid #e5e2ff;border-radius:10px;padding:12px;margin-bottom:10px;font-size:12.5px}
+  .sugg .t{font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+  .sugg .t .dot{width:7px;height:7px;border-radius:50%;background:var(--purple);flex:none}
+  .sugg .a{margin-top:10px;display:flex;gap:7px}
+  .btn{border:none;border-radius:8px;padding:7px 12px;font-size:11.5px;font-weight:600;cursor:pointer}
+  .btn.p{background:var(--purple);color:#fff} .btn.s{background:#ecebff;color:var(--purple)}
+
+  /* health card */
+  .health{display:flex;flex-direction:column;gap:12px}
+  .hrow{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+  .hrow .nm{color:var(--ink)} .hrow .pv{font-weight:700}
+  .mini{height:6px;border-radius:6px;background:var(--bg);overflow:hidden;margin-top:5px}
+  .mini i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--teal))}
+</style>
+</head>
+<body>
+  <div class="app">
+    <!-- sidebar -->
+    <aside class="side">
+      <div class="brand"><div class="logo">H</div><b>HeroForce</b></div>
+      <nav class="nav">
+        <a class="on"><span class="i">▦</span> Home</a>
+        <a><span class="i">▤</span> Pipeline</a>
+        <a><span class="i">◈</span> Deals</a>
+        <a><span class="i">☰</span> Accounts</a>
+        <a><span class="i">✦</span> AI Assist</a>
+        <a><span class="i">▧</span> Reports</a>
+        <a><span class="i">⚙</span> Settings</a>
+      </nav>
+      <div class="foot">Bluewave Retail · Growth plan<br>240 seats · 216 active</div>
+    </aside>
+
+    <!-- main -->
+    <div class="main">
+      <div class="topbar">
+        <div class="search">
+          <span class="mag">🔍</span>
+          <input placeholder="Search accounts, deals, contacts — or open your pipeline">
+        </div>
+        <div class="topact">
+          <span class="ic">✦</span>
+          <span class="ic">🔔</span>
+          <div class="who"><span>Jordan Reyes</span><div class="av">JR</div></div>
+        </div>
+      </div>
+
+      <div class="scroll">
+        <div class="content">
+          <!-- left column -->
+          <div class="col">
+            <div class="greet">
+              <h1>Good morning, Jordan</h1>
+              <p>You have 5 deals that need attention today.</p>
+            </div>
+
+            <div class="card">
+              <h3>Today at a glance</h3>
+              <div class="kpis">
+                <div class="kpi"><div class="v">18</div><div class="l">Open deals</div></div>
+                <div class="kpi"><div class="v">$1.4M</div><div class="l">Your pipeline</div></div>
+                <div class="kpi"><div class="v">$310K</div><div class="l">Closing this month</div></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Your pipeline <a>View all →</a></h3>
+              <div class="board">
+                <div class="lane"><div class="lh">Prospect <span>6</span></div>
+                  <div class="deal"><b>Northwind Traders</b><span class="co">New logo</span><span class="amt">$180K</span></div>
+                  <div class="deal"><b>Contoso Ltd</b><span class="co">Inbound</span><span class="amt">$95K</span></div>
+                  <div class="deal"><b>Litware Inc</b><span class="co">Referral</span><span class="amt">$70K</span></div>
+                </div>
+                <div class="lane"><div class="lh">Qualify <span>5</span></div>
+                  <div class="deal"><b>Fabrikam Inc</b><span class="co">Expansion</span><span class="amt">$240K</span></div>
+                  <div class="deal"><b>Tailspin Toys</b><span class="co">Renewal</span><span class="amt">$60K</span></div>
+                </div>
+                <div class="lane"><div class="lh">Propose <span>4</span></div>
+                  <div class="deal"><b>Adventure Works</b><span class="co">Upsell</span><span class="amt">$310K</span></div>
+                  <div class="deal"><b>Proseware</b><span class="co">New logo</span><span class="amt">$120K</span></div>
+                </div>
+                <div class="lane"><div class="lh">Close <span>3</span></div>
+                  <div class="deal"><b>Wingtip</b><span class="co">Verbal yes</span><span class="amt">$140K</span></div>
+                  <div class="deal"><b>Fourth Coffee</b><span class="co">Contract out</span><span class="amt">$88K</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>To-do &amp; recent activity</h3>
+              <ul class="tasklist">
+                <li><span class="chk"></span> <div>Log call with Fabrikam Inc<small>Discovery follow-up · due today</small></div></li>
+                <li><span class="chk"></span> <div>Move Adventure Works to Propose<small>Pricing sent yesterday</small></div></li>
+                <li><span class="chk"></span> <div>Email recap to Wingtip<small>Decision-maker requested terms</small></div></li>
+                <li><span class="chk"></span> <div>Schedule QBR with Bluewave Retail<small>Renewal in 30 days</small></div></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- right column -->
+          <div class="col">
+            <div class="card ai">
+              <h3>AI Assist <span class="badge">✦ BETA</span></h3>
+              <div class="sugg">
+                <div class="t"><span class="dot"></span> Prioritize Adventure Works</div>
+                Idle 6 days at Propose. 82% close-likelihood — send the pricing recap now.
+                <div class="a"><button class="btn p">Draft email</button><button class="btn s">Snooze</button></div>
+              </div>
+              <div class="sugg">
+                <div class="t"><span class="dot"></span> Re-engage Contoso Ltd</div>
+                No activity in 9 days. AI drafted a check-in tuned to their last reply.
+                <div class="a"><button class="btn p">Review draft</button><button class="btn s">Dismiss</button></div>
+              </div>
+              <div class="sugg">
+                <div class="t"><span class="dot"></span> Forecast risk</div>
+                2 close-stage deals slipping past quarter — reprioritize?
+                <div class="a"><button class="btn p">Show deals</button></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Account health</h3>
+              <div class="health">
+                <div>
+                  <div class="hrow"><span class="nm">Seat activation</span><span class="pv">90%</span></div>
+                  <div class="mini"><i style="width:90%"></i></div>
+                </div>
+                <div>
+                  <div class="hrow"><span class="nm">Weekly returning users</span><span class="pv">66%</span></div>
+                  <div class="mini"><i style="width:66%"></i></div>
+                </div>
+                <div>
+                  <div class="hrow"><span class="nm">Data-sync health</span><span class="pv">99%</span></div>
+                  <div class="mini"><i style="width:99%"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
