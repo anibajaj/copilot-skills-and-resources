@@ -5,6 +5,18 @@ Copilot / agent workflow — no matter what product, dashboard, or vendor you wo
 with. Everything here is written to be reusable and free of product-specific
 vocabulary.
 
+> ## ⚠️ Disclaimer
+>
+> This repository is intended for **skilling, training, and building user
+> knowledge** — learning how to work with Copilot/agent skills and reusable
+> resources. Any sample data included (e.g. the mock product dataset) is
+> **fictional** and provided purely for demonstration.
+>
+> **Before using anything here for enterprise or production purposes, review and
+> validate it yourself** — check for suitability, security, compliance, licensing,
+> and data-handling requirements against your organization's policies. It is
+> provided "as is" with no warranty (see [License](#license)).
+
 ## Skills
 
 | Skill | What it does |
