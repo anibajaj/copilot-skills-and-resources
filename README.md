@@ -40,6 +40,15 @@ node generate-deck.js examples/deck-config.example.json "Acme Cloud Telemetry - 
 
 See [`deck-generator/README.md`](./deck-generator/README.md) for full details.
 
+## Automations
+
+Importable scheduled agent prompts you can drop into any automation surface (e.g.
+Microsoft Scout, Cowork) that accepts a multi-step scheduled prompt.
+
+| Automation | What it does |
+|------------|--------------|
+| [`product-market-updates/`](./product-market-updates/) | Weekly **market-update digest** for your product — scans competitor, own-org, and AI-landscape news, verifies every item has a real source + link + date, dedupes the same story across outlets and against a persistent run history, and outputs a prioritized, scannable summary (Competitor Moves · Your Org & Strategy · AI Landscape · Why It Matters · Watch List). Product-neutral; ships with `enabled: false` so it's safe to import. |
+
 ## Resources
 
 | Resource | What it is |

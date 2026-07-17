@@ -1,0 +1,54 @@
+{
+  "description": "This automation reviews recent market and competitor developments related to my product and summarizes them weekly.",
+  "schedule": {
+    "kind": "single",
+    "naturalLanguage": "Every Friday at 9AM",
+    "days": [
+      5
+    ],
+    "time": {
+      "hour": 9,
+      "minute": 0
+    },
+    "hour": 9,
+    "minute": 0
+  },
+  "model": "claude-opus-4.6",
+  "browserHeadless": true,
+  "teamsNotify": "always",
+  "name": "Product market updates",
+  "steps": [
+    {
+      "id": "1",
+      "label": "Load product context (one-time setup)",
+      "prompt": "This is a one-time setup step. Get product context from the user and save it to market-updates/product-context.md (in your working folder) for subsequent runs. This informs what to look for. From what the user provides, understand the industry, typical competitors, etc. Also note the user's current company and where the product sits within the organization, so you have context on which parts of the business might affect them. Infer the user's role and org details yourself. The first time, validate your understanding with the user before saving.\n\nOn later runs this step is a no-op: if product-context.md already exists, read it and continue - only re-prompt the user if they explicitly ask to update context."
+    },
+    {
+      "id": "2",
+      "label": "Maintain source registry (where to scan)",
+      "prompt": "Maintain the source registry at market-updates/source-registry.md - this is WHERE the weekly scan looks. Read product-context.md first.\n\nIf the registry does not exist or is still mostly placeholders (first real run): based on the product context, propose concrete sources to fill each section (competitor newsrooms/blogs/changelogs, your org's press/blog, relevant industry/analyst media, AI-lab news pages, and standing search queries). Only add real URLs you can verify - never invent links. Show proposed additions to the user, then save the confirmed set.\n\nIf the registry is already populated: read it and continue. Optionally suggest 1-2 new high-signal sources you noticed, but do not overwrite the user's curated list without asking."
+    },
+    {
+      "id": "3",
+      "label": "Scan sources for the past week",
+      "prompt": "You are a market research assistant. Read market-updates/product-context.md (what to look for) and market-updates/source-registry.md (where to look). Scan the registered sources plus a broader deep-research web scan for the PAST 7 DAYS. Cover: (a) external competitor updates - announcements, strategy changes, feature/product releases, pricing changes; (b) updates from the user's own organization that might be relevant - strategy, announcements, new features; (c) AI landscape - new models or major platform/feature releases from big AI players and notable startups (OpenAI, Anthropic, Google, etc.).\n\nProduce a raw candidate list. For each candidate capture: headline, source/outlet name, URL, and publication date. Cast a wide net here - filtering happens in the next step. Do not summarize yet."
+    },
+    {
+      "id": "4",
+      "label": "Verify, dedupe, and compare against history",
+      "prompt": "Filter the raw candidates from Step 3 into a clean item set:\n\n- PROVENANCE (mandatory): every item must have a real source name, a working URL, and a publication date. If you cannot verify an item against an actual source, DROP it. Every reference must be real and come from an actual source - do not invent headlines, links, or claims.\n- DEDUPE & CORROBORATE: when the same story appears in multiple outlets, merge into ONE item with a canonical link and list the outlets. Mark single-source items as 'unconfirmed'.\n- AGAINST HISTORY: read market-updates/reported-items.md and exclude anything already reported (match on URL first, then on normalized title). Tag each surviving item as NEW or STILL-DEVELOPING (a meaningful update to something previously reported).\n\nPass the verified, deduped, tagged item list (headline, source(s), URL, date, NEW/STILL-DEVELOPING) to Step 5."
+    },
+    {
+      "id": "5",
+      "label": "Summarize into the market-update template",
+      "prompt": "Summarize the verified items from Step 4 into a fixed, scannable template with these sections in this order: (1) Competitor Moves, (2) Your Org & Strategy, (3) AI Landscape, (4) Why It Matters to <product>, (5) Watch List. Within each of sections 1-3, split items into 'New this week' and 'Still developing'.\n\nFor EVERY item, use this one-line format:\n  <urgency tag> <headline> - <one-line 'so what' implication for the user's product/business> [Source(s), date, link]\nUrgency tags: RED (act now / directly affects the product or a near-term decision), YELLOW (watch / could matter soon), WHITE (FYI / context only). Keep it tight and skimmable - sub-bullets only where an item genuinely needs them. Section 4 (Why It Matters) is a short synthesis: the 2-4 most consequential implications across everything above, framed for the user's product. Section 5 (Watch List) lists threads to monitor next week. Do not include any item that lacks a real source and link. This summary is the output delivered to the user."
+    },
+    {
+      "id": "6",
+      "label": "Update the reported-items ledger",
+      "prompt": "Append every item you reported in Step 5 to the ledger table in market-updates/reported-items.md - one row per item, with: date reported (today), section, title, canonical URL, outlets, and status (new / still-developing). Do NOT delete or rewrite existing rows; only append. This ledger is what enables next week's dedup, so it must always be updated after the summary is produced."
+    }
+  ],
+  "enabled": false,
+  "triggerType": "schedule"
+}
