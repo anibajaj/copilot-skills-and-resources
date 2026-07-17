@@ -114,9 +114,23 @@ function normalize(data) {
 }
 
 // ─── embed ───
+// Find a marker that is NOT inside an HTML comment (guards against the template's
+// own documentation mentioning the tag).
+function findOutsideComment(html, needle) {
+  let idx = html.indexOf(needle);
+  while (idx !== -1) {
+    const before = html.slice(0, idx);
+    const lastOpen = before.lastIndexOf('<!--');
+    const lastClose = before.lastIndexOf('-->');
+    if (lastOpen <= lastClose) return idx; // not inside an open comment
+    idx = html.indexOf(needle, idx + needle.length);
+  }
+  return -1;
+}
+
 function embed(templateHtml, data) {
   const openTag = '<script id="dashboard-data">';
-  const start = templateHtml.indexOf(openTag);
+  const start = findOutsideComment(templateHtml, openTag);
   if (start === -1) fail('Template is missing the <script id="dashboard-data"> tag.');
   const contentStart = start + openTag.length;
   const closeTag = '</script>';
@@ -126,7 +140,14 @@ function embed(templateHtml, data) {
   // Guard against breaking out of the <script> context.
   const payload = JSON.stringify(data).replace(/<\/script/gi, '<\\/script');
   const injected = 'window.__DASHBOARD_DATA__ = ' + payload + ';';
-  return templateHtml.slice(0, contentStart) + injected + templateHtml.slice(contentEnd);
+  const result = templateHtml.slice(0, contentStart) + injected + templateHtml.slice(contentEnd);
+
+  // Structural sanity: the header and app container must still exist AFTER the
+  // embedded data (i.e. not accidentally swallowed into a comment or script).
+  const afterData = result.slice(contentStart + injected.length);
+  if (afterData.indexOf('<div class="main" id="app">') === -1)
+    fail('Embedding corrupted the document structure (app container missing after data). Aborting.');
+  return result;
 }
 
 // ─── main ───
