@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Insights — Product Overview</title>
+<style>
+/* ═══════════════════════ DESIGN SYSTEM ═══════════════════════ */
+:root {
+  --bg: #f0f2f5; --card: #ffffff; --border: #e5e7eb;
+  --text: #1f2937; --text-sec: #6b7280; --text-muted: #9ca3af;
+  --blue: #3b82f6; --blue-lt: #eff6ff; --blue-dk: #1e40af;
+  --green: #10b981; --green-lt: #ecfdf5; --green-dk: #065f46;
+  --red: #ef4444; --red-lt: #fef2f2; --red-dk: #991b1b;
+  --amber: #f59e0b; --amber-lt: #fffbeb; --amber-dk: #92400e;
+  --purple: #8b5cf6; --purple-lt: #f5f3ff; --purple-dk: #5b21b6;
+  --teal: #06b6d4; --teal-lt: #ecfeff; --teal-dk: #155e75;
+  --gray: #9ca3af; --gray-lt: #f3f4f6;
+  --radius: 12px; --radius-sm: 8px; --radius-xs: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08); --shadow-md: 0 4px 6px rgba(0,0,0,.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,.1);
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ═══════════════════════ HEADER ═══════════════════════ */
+.header { background: var(--card); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 56px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+.header-logo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue), var(--purple)); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 16px; margin-right: 12px; flex-shrink: 0; }
+.header-title { font-size: 16px; font-weight: 700; color: var(--text); }
+.header-subtitle { font-size: 12px; color: var(--text-sec); }
+.header-info { margin-left: auto; font-size: 11px; color: var(--text-muted); display: flex; gap: 16px; align-items: center; }
+.header-info .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
+
+/* ═══════════════════════ LAYOUT ═══════════════════════ */
+.main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════ CARDS ═══════════════════════ */
+.card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); padding: 20px; margin-bottom: 20px; }
+.card-title { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.card-title .icon { font-size: 17px; }
+.card-subtitle { font-size: 12px; color: var(--text-sec); font-weight: 400; margin-bottom: 16px; }
+.section-border { border-left: 3px solid var(--border); }
+.section-border.blue { border-left-color: var(--blue); }
+.section-border.red { border-left-color: var(--red); }
+.section-border.green { border-left-color: var(--green); }
+.section-border.purple { border-left-color: var(--purple); }
+.section-border.amber { border-left-color: var(--amber); }
+.section-border.teal { border-left-color: var(--teal); }
+
+/* ═══════════════════════ EXEC SUMMARY ═══════════════════════ */
+.exec-card { border: none; background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 50%, #f5f3ff 100%); border-left: 5px solid var(--blue); box-shadow: 0 2px 12px rgba(59,130,246,.12); }
+.exec-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.exec-name { font-size: 22px; font-weight: 800; }
+.exec-count { text-align: right; }
+.exec-count .n { font-size: 28px; font-weight: 800; color: var(--blue); }
+.exec-count .l { font-size: 11px; color: var(--text-sec); font-weight: 600; }
+.exec-body { font-size: 13.5px; color: var(--text); line-height: 1.7; white-space: pre-line; }
+
+/* ═══════════════════════ GOAL BARS ═══════════════════════ */
+.bar-row { display: flex; align-items: center; margin-bottom: 10px; border-radius: var(--radius-xs); padding: 6px 8px; }
+.bar-label { width: 50%; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+.bar-track { flex: 1; height: 24px; background: var(--gray-lt); border-radius: 12px; overflow: hidden; margin: 0 12px; }
+.bar-fill { height: 100%; border-radius: 12px; transition: width .5s ease; min-width: 2px; background: var(--teal); }
+.bar-value { font-size: 13px; font-weight: 600; width: 90px; text-align: right; flex-shrink: 0; color: var(--text-sec); }
+
+/* ═══════════════════════ THEMED LISTS ═══════════════════════ */
+.theme-item { border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 8px; overflow: hidden; transition: box-shadow .15s; }
+.theme-item:hover { box-shadow: var(--shadow-md); }
+.theme-header { display: flex; align-items: center; padding: 14px 16px; cursor: pointer; user-select: none; gap: 12px; }
+.theme-header .theme-name { font-size: 14px; font-weight: 600; flex: 1; }
+.theme-header .theme-meta { font-size: 12px; color: var(--text-sec); white-space: nowrap; }
+.theme-header .chevron { font-size: 12px; color: var(--text-muted); transition: transform .2s; }
+.theme-item.expanded .chevron { transform: rotate(90deg); }
+.theme-detail { display: none; padding: 0 16px 14px; border-top: 1px solid var(--border); }
+.theme-item.expanded .theme-detail { display: block; padding-top: 14px; }
+.theme-desc { margin-bottom: 8px; font-size: 13px; color: var(--text); line-height: 1.5; }
+.theme-sub { margin-bottom: 8px; font-size: 12px; color: var(--text-sec); }
+.theme-custs { font-size: 12px; color: var(--text-muted); }
+.evidence-section { margin-top: 12px; border-top: 1px solid var(--border); padding-top: 10px; }
+.ev-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; color: var(--text-muted); margin-bottom: 8px; }
+.evidence-row { background: var(--gray-lt); border-radius: var(--radius-xs); padding: 10px 12px; margin-bottom: 8px; font-size: 12.5px; line-height: 1.55; border-left: 3px solid var(--border); }
+.evidence-row .ev-source { font-size: 11px; color: var(--text-sec); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.evidence-row .ev-customer { font-weight: 700; color: var(--text); }
+.evidence-row .ev-quote { margin-top: 5px; font-style: italic; color: var(--text); }
+.empty { color: var(--text-muted); font-size: 13px; padding: 4px 0; }
+
+/* ═══════════════════════ PLACEHOLDER ═══════════════════════ */
+.placeholder { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+.placeholder .p-icon { font-size: 48px; margin-bottom: 12px; }
+.placeholder .p-title { font-size: 18px; font-weight: 700; color: var(--text-sec); margin-bottom: 6px; }
+.fade-in { animation: fade .3s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<!--
+  Self-contained product-overview dashboard.
+  Data is embedded below in the <script id="dashboard-data"> tag as
+  window.__DASHBOARD_DATA__. Populate it with build-dashboard.js — do NOT hand-edit.
+  Works offline and via file:// — no network fetch required.
+-->
+<script id="dashboard-data">window.__DASHBOARD_DATA__ = null;</script>
+
+<div class="header">
+  <div class="header-logo">◧</div>
+  <div>
+    <div class="header-title" id="hdr-title">Customer Insights</div>
+    <div class="header-subtitle">Product Overview</div>
+  </div>
+  <div class="header-info">
+    <span><span class="dot"></span> <span id="hdr-updated">—</span></span>
+  </div>
+</div>
+
+<div class="main" id="app"></div>
+
+<script>
+// ─── helpers ───
+function esc(s) {
+  if (s === null || s === undefined) return '';
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+}
+function pluralS(n) { return n === 1 ? '' : 's'; }
+
+const SOURCE_ICONS = { email: '📧', teams_chat: '💬', chat: '💬', meeting: '📅', call: '📞', user_added: '✏️' };
+
+// ─── theme (cluster) renderer ───
+function renderClusters(items, type) {
+  if (!items || !items.length) return '<p class="empty">None recorded.</p>';
+  return items.map((it, i) => {
+    const customers = it.customers || [];
+    const custCount = it.customer_count != null ? it.customer_count : customers.length;
+    const evItems = it.items || [];
+    const itemCount = it.item_count != null ? it.item_count : evItems.length;
+    const subThemes = it.sub_themes || [];
+    const evHtml = evItems.length ? `<div class="evidence-section">
+        <div class="ev-label">📋 Evidence (${evItems.length})</div>
+        ${evItems.map(ev => {
+          const icon = SOURCE_ICONS[ev.source_type] || '📄';
+          const label = ev.source_subject || (ev.source_type || '').replace('_', ' ');
+          return `<div class="evidence-row">
+            <div class="ev-source">
+              <span class="ev-customer">${esc(ev.customer || '')}</span>
+              ${label ? `<span>${icon} ${esc(label)}</span>` : ''}
+              ${ev.date ? `<span>📅 ${esc(ev.date)}</span>` : ''}
+            </div>
+            ${ev.quote ? `<div class="ev-quote">"${esc(ev.quote)}"</div>` : ''}
+          </div>`;
+        }).join('')}
+      </div>` : '';
+    return `<div class="theme-item" id="th-${type}-${i}">
+      <div class="theme-header" onclick="toggleTheme('th-${type}-${i}')">
+        <div class="theme-name">${esc(it.theme)}</div>
+        <div class="theme-meta">${custCount} customer${pluralS(custCount)} · ${itemCount} item${pluralS(itemCount)}</div>
+        <div class="chevron">▸</div>
+      </div>
+      <div class="theme-detail">
+        ${it.description ? `<div class="theme-desc">${esc(it.description)}</div>` : ''}
+        ${subThemes.length > 1 ? `<div class="theme-sub"><strong>Sub-themes:</strong> ${subThemes.map(esc).join(', ')}</div>` : ''}
+        ${customers.length ? `<div class="theme-custs"><strong>Customers:</strong> ${customers.map(esc).join(', ')}</div>` : ''}
+        ${evHtml}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderGoals(goals) {
+  if (!goals || !goals.length) return '<p class="empty">None recorded.</p>';
+  const max = Math.max(...goals.map(g => (g.customer_count != null ? g.customer_count : (g.customers || []).length) || 1));
+  return goals.map(g => {
+    const n = g.customer_count != null ? g.customer_count : (g.customers || []).length;
+    return `<div class="bar-row">
+      <div class="bar-label">${esc(g.theme || g.goal)}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, Math.round((n / max) * 100))}%"></div></div>
+      <div class="bar-value">${n} customer${pluralS(n)}</div>
+    </div>`;
+  }).join('');
+}
+
+function toggleTheme(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('expanded');
+}
+
+// ─── app ───
+function render() {
+  const data = window.__DASHBOARD_DATA__;
+  const app = document.getElementById('app');
+  if (!data) {
+    app.innerHTML = `<div class="placeholder">
+      <div class="p-icon">📊</div>
+      <div class="p-title">No data embedded yet</div>
+      <div>Run build-dashboard.js with your dashboard_data.json to populate this overview.</div>
+    </div>`;
+    return;
+  }
+  const product = data.product || { name: 'Product', icon: '📊' };
+  const t = data.themes || {};
+  document.getElementById('hdr-title').textContent = product.name + ' — Customer Insights';
+  document.getElementById('hdr-updated').textContent = data.last_updated ? ('Updated ' + String(data.last_updated).slice(0, 10)) : '—';
+  document.title = product.name + ' — Customer Insights';
+
+  app.innerHTML = `<div class="fade-in">
+    ${data.executive_summary ? `<div class="card exec-card">
+      <div class="exec-head">
+        <div class="exec-name">${esc(product.icon || '📊')} ${esc(product.name)}</div>
+        <div class="exec-count"><div class="n">${data.total_customers != null ? data.total_customers : ''}</div><div class="l">Customers</div></div>
+      </div>
+      <div class="exec-body">${esc(data.executive_summary)}</div>
+    </div>` : ''}
+
+    <div class="card section-border teal">
+      <div class="card-title"><span class="icon">🎯</span> Top Goals / Use Cases</div>
+      <div class="card-subtitle">What customers are trying to accomplish</div>
+      ${renderGoals(t.goals)}
+    </div>
+
+    <div class="card section-border red">
+      <div class="card-title"><span class="icon">⚠️</span> Top Blockers</div>
+      <div class="card-subtitle">Issues preventing customers from advancing</div>
+      ${renderClusters(t.blockers, 'blocker')}
+    </div>
+
+    <div class="card section-border purple">
+      <div class="card-title"><span class="icon">💡</span> Top Feature Requests</div>
+      <div class="card-subtitle">Capabilities customers are asking for</div>
+      ${renderClusters(t.feature_requests, 'feature')}
+    </div>
+
+    <div class="grid-2">
+      <div class="card section-border green">
+        <div class="card-title"><span class="icon">👍</span> Top Positive Feedback</div>
+        ${renderClusters(t.feedback_positive, 'positive')}
+      </div>
+      <div class="card section-border amber">
+        <div class="card-title"><span class="icon">👎</span> Top Negative Feedback</div>
+        ${renderClusters(t.feedback_negative, 'negative')}
+      </div>
+    </div>
+  </div>`;
+}
+
+render();
+</script>
+</body>
+</html>

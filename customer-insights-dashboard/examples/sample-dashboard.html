@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Insights — Product Overview</title>
+<style>
+/* ═══════════════════════ DESIGN SYSTEM ═══════════════════════ */
+:root {
+  --bg: #f0f2f5; --card: #ffffff; --border: #e5e7eb;
+  --text: #1f2937; --text-sec: #6b7280; --text-muted: #9ca3af;
+  --blue: #3b82f6; --blue-lt: #eff6ff; --blue-dk: #1e40af;
+  --green: #10b981; --green-lt: #ecfdf5; --green-dk: #065f46;
+  --red: #ef4444; --red-lt: #fef2f2; --red-dk: #991b1b;
+  --amber: #f59e0b; --amber-lt: #fffbeb; --amber-dk: #92400e;
+  --purple: #8b5cf6; --purple-lt: #f5f3ff; --purple-dk: #5b21b6;
+  --teal: #06b6d4; --teal-lt: #ecfeff; --teal-dk: #155e75;
+  --gray: #9ca3af; --gray-lt: #f3f4f6;
+  --radius: 12px; --radius-sm: 8px; --radius-xs: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08); --shadow-md: 0 4px 6px rgba(0,0,0,.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,.1);
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ═══════════════════════ HEADER ═══════════════════════ */
+.header { background: var(--card); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 56px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+.header-logo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue), var(--purple)); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 16px; margin-right: 12px; flex-shrink: 0; }
+.header-title { font-size: 16px; font-weight: 700; color: var(--text); }
+.header-subtitle { font-size: 12px; color: var(--text-sec); }
+.header-info { margin-left: auto; font-size: 11px; color: var(--text-muted); display: flex; gap: 16px; align-items: center; }
+.header-info .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
+
+/* ═══════════════════════ LAYOUT ═══════════════════════ */
+.main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════ CARDS ═══════════════════════ */
+.card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); padding: 20px; margin-bottom: 20px; }
+.card-title { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.card-title .icon { font-size: 17px; }
+.card-subtitle { font-size: 12px; color: var(--text-sec); font-weight: 400; margin-bottom: 16px; }
+.section-border { border-left: 3px solid var(--border); }
+.section-border.blue { border-left-color: var(--blue); }
+.section-border.red { border-left-color: var(--red); }
+.section-border.green { border-left-color: var(--green); }
+.section-border.purple { border-left-color: var(--purple); }
+.section-border.amber { border-left-color: var(--amber); }
+.section-border.teal { border-left-color: var(--teal); }
+
+/* ═══════════════════════ EXEC SUMMARY ═══════════════════════ */
+.exec-card { border: none; background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 50%, #f5f3ff 100%); border-left: 5px solid var(--blue); box-shadow: 0 2px 12px rgba(59,130,246,.12); }
+.exec-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.exec-name { font-size: 22px; font-weight: 800; }
+.exec-count { text-align: right; }
+.exec-count .n { font-size: 28px; font-weight: 800; color: var(--blue); }
+.exec-count .l { font-size: 11px; color: var(--text-sec); font-weight: 600; }
+.exec-body { font-size: 13.5px; color: var(--text); line-height: 1.7; white-space: pre-line; }
+
+/* ═══════════════════════ GOAL BARS ═══════════════════════ */
+.bar-row { display: flex; align-items: center; margin-bottom: 10px; border-radius: var(--radius-xs); padding: 6px 8px; }
+.bar-label { width: 50%; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+.bar-track { flex: 1; height: 24px; background: var(--gray-lt); border-radius: 12px; overflow: hidden; margin: 0 12px; }
+.bar-fill { height: 100%; border-radius: 12px; transition: width .5s ease; min-width: 2px; background: var(--teal); }
+.bar-value { font-size: 13px; font-weight: 600; width: 90px; text-align: right; flex-shrink: 0; color: var(--text-sec); }
+
+/* ═══════════════════════ THEMED LISTS ═══════════════════════ */
+.theme-item { border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 8px; overflow: hidden; transition: box-shadow .15s; }
+.theme-item:hover { box-shadow: var(--shadow-md); }
+.theme-header { display: flex; align-items: center; padding: 14px 16px; cursor: pointer; user-select: none; gap: 12px; }
+.theme-header .theme-name { font-size: 14px; font-weight: 600; flex: 1; }
+.theme-header .theme-meta { font-size: 12px; color: var(--text-sec); white-space: nowrap; }
+.theme-header .chevron { font-size: 12px; color: var(--text-muted); transition: transform .2s; }
+.theme-item.expanded .chevron { transform: rotate(90deg); }
+.theme-detail { display: none; padding: 0 16px 14px; border-top: 1px solid var(--border); }
+.theme-item.expanded .theme-detail { display: block; padding-top: 14px; }
+.theme-desc { margin-bottom: 8px; font-size: 13px; color: var(--text); line-height: 1.5; }
+.theme-sub { margin-bottom: 8px; font-size: 12px; color: var(--text-sec); }
+.theme-custs { font-size: 12px; color: var(--text-muted); }
+.evidence-section { margin-top: 12px; border-top: 1px solid var(--border); padding-top: 10px; }
+.ev-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; color: var(--text-muted); margin-bottom: 8px; }
+.evidence-row { background: var(--gray-lt); border-radius: var(--radius-xs); padding: 10px 12px; margin-bottom: 8px; font-size: 12.5px; line-height: 1.55; border-left: 3px solid var(--border); }
+.evidence-row .ev-source { font-size: 11px; color: var(--text-sec); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.evidence-row .ev-customer { font-weight: 700; color: var(--text); }
+.evidence-row .ev-quote { margin-top: 5px; font-style: italic; color: var(--text); }
+.empty { color: var(--text-muted); font-size: 13px; padding: 4px 0; }
+
+/* ═══════════════════════ PLACEHOLDER ═══════════════════════ */
+.placeholder { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+.placeholder .p-icon { font-size: 48px; margin-bottom: 12px; }
+.placeholder .p-title { font-size: 18px; font-weight: 700; color: var(--text-sec); margin-bottom: 6px; }
+.fade-in { animation: fade .3s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<!--
+  Self-contained product-overview dashboard.
+  Data is embedded below in the <script id="dashboard-data">window.__DASHBOARD_DATA__ = {"last_updated":"2026-07-16T12:00:00-07:00","product":{"name":"HeroForce CRM","icon":"📊"},"total_customers":6,"generated_from":["user-feedback.json (June 2026 NPS + post-session prompts)"],"executive_summary":"Customers adopt HeroForce CRM to keep a live, trustworthy pipeline while spending as little time as possible on data entry — the recurring goal across accounts is \"less admin, more selling.\" Reps at Delmar Financial and Atlas Freight describe the app as their daily pre-meeting briefing, and RevOps and leadership at Bluewave Retail and Everline Media want the forecast to be trustworthy enough to run the business on.\n\nWhat customers value is consistent and strong (NPS 47, avg rating 4.2): AI Assist is the standout, credited with cutting prep time and speeding deal prioritization at Atlas Freight and Bluewave Retail. The morning pipeline view is a daily anchor for field reps, onboarding new reps is described as painless at Corveto Health, and forecasting is called trustworthy at Everline Media once the data is in.\n\nThere are no hard adoption blockers — criticism is concentrated and specific rather than broad dissatisfaction, and no customer has threatened to stop using the product. The risk is erosion, not rejection.\n\nThe dominant negative theme is that updating deals mid-day is too much work: reps are mobile and back-to-back, and logging a call takes too many fields and clicks, so they batch updates to Friday or Sunday night — or skip them. Atlas Freight, Bluewave Retail, Corveto Health, and Everline Media all raised this independently, and it directly undercuts the pipeline freshness the product's best features depend on.\n\nThe top feature requests point straight at the fix: voice and one-tap call logging (Delmar Financial, Atlas Freight, Proseware) and AI-drafted updates the rep only has to approve (Proseware). Delivering a lightweight, hands-free update path would neutralize the loudest complaint and satisfy the most-requested capability in one move.","themes":{"goals":[{"theme":"Keep the pipeline current without it feeling like admin","customers":["Atlas Freight","Bluewave Retail","Corveto Health","Delmar Financial","Everline Media","Proseware"],"customer_count":6},{"theme":"Close deals faster with accurate AI prioritization","customers":["Atlas Freight","Bluewave Retail"],"customer_count":2},{"theme":"Trustworthy forecasting leadership can run the business on","customers":["Bluewave Retail","Everline Media"],"customer_count":2},{"theme":"Onboard new reps quickly","customers":["Corveto Health"],"customer_count":1}],"blockers":[],"feature_requests":[{"theme":"Voice and one-tap call logging for reps who are never at a desk","description":"Field and territory reps at Delmar Financial, Atlas Freight, and Proseware want to log calls and update stages hands-free — by voice or a single tap — because they work from the car and between back-to-back meetings and cannot safely type into the current form while mobile.","sub_themes":["Wish I could log a call by voice / one tap","Update from the road / mobile","One-tap stage change"],"customers":["Delmar Financial","Atlas Freight","Proseware"],"customer_count":3,"item_count":3,"items":[{"customer":"Delmar Financial","quote":"I'm in my car or at client sites most of the day. I open HeroForce to see my pipeline, but I can't safely update a deal from the road. Give me a voice note and be done.","detail":"Territory rep is mobile-only during the day and explicitly asks for hands-free voice logging.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"},{"customer":"Atlas Freight","quote":"I check my deals on my phone between meetings all day — but there's no way I'm typing a call summary into all those fields while I'm walking into the next one.","detail":"Wants a fast, low-effort way to capture updates between meetings on mobile.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"},{"customer":"Proseware","quote":"I sell, I don't do data entry. If AI Assist could just write the update from my call and let me tap 'yes', I'd actually keep the CRM current.","detail":"Wants one-tap confirmation instead of manual entry.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"}]},{"theme":"AI-drafted deal updates the rep only has to approve","description":"Proseware wants AI Assist to go one step further and draft the deal update straight from the call so the rep reviews and approves rather than authoring from scratch — turning updating from a chore into a confirmation.","sub_themes":["AI drafts the update from my call","Approve-not-author workflow"],"customers":["Proseware"],"customer_count":1,"item_count":1,"items":[{"customer":"Proseware","quote":"If AI Assist could just write the update from my call and let me tap 'yes', I'd actually keep the CRM current.","detail":"Requests AI-generated updates gated by a single approval tap.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"}]}],"feedback_positive":[{"theme":"AI Assist is a real time-saver that speeds deal closing","description":"AI Assist is the most-praised capability. Atlas Freight says it cut prep time in half, and Bluewave Retail calls the pipeline suggestions accurate enough that the whole team switched over in a week.","sub_themes":["AI Assist saves time","Faster deal closing / prioritization"],"customers":["Atlas Freight","Bluewave Retail"],"customer_count":2,"item_count":2,"items":[{"customer":"Atlas Freight","quote":"AI Assist cut my prep time in half — I close more deals in a day than I used to in three.","detail":"AI Assist credited with a large productivity gain.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"},{"customer":"Bluewave Retail","quote":"The pipeline suggestions are scary accurate. My whole team switched over in a week.","detail":"AI-driven prioritization drove fast team adoption.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"}]},{"theme":"The morning pipeline view is a daily anchor","description":"Field reps open the app first thing to see which deals are heating up before client visits. Delmar Financial and Atlas Freight both describe it as their pre-meeting briefing — the reason the product stuck.","sub_themes":["Good pipeline visibility","Morning briefing ritual"],"customers":["Delmar Financial","Atlas Freight"],"customer_count":2,"item_count":2,"items":[{"customer":"Delmar Financial","quote":"Love opening the app in the morning and seeing exactly which deals are heating up.","detail":"Morning pipeline view used as a daily prioritization ritual.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"},{"customer":"Atlas Freight","quote":"Nothing wrong with finding my deals — they're right there when I log in.","detail":"Pipeline visibility on login works well even for a mobile rep.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"}]},{"theme":"Painless onboarding and trustworthy forecasting","description":"Corveto Health calls it the best CRM update in years and says onboarding new reps is finally painless, while Everline Media says forecasting is trustworthy once the data is in.","sub_themes":["Easy onboarding for new reps","Trustworthy forecasting"],"customers":["Corveto Health","Everline Media"],"customer_count":2,"item_count":2,"items":[{"customer":"Corveto Health","quote":"Best CRM update in years. Onboarding new reps is finally painless.","detail":"Onboarding experience praised by a VP of Sales.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"},{"customer":"Everline Media","quote":"Forecasting is finally trustworthy — when the data is in, it's gold.","detail":"Forecast quality is strong, conditional on data freshness.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"}]}],"feedback_negative":[{"theme":"Updating deals mid-day is too much work, so reps batch it to end of week","description":"The single most common complaint. Reps at Atlas Freight, Bluewave Retail, Corveto Health, and Everline Media all say logging a call takes too many fields and clicks and can't be done live, so they defer updates to Friday or Sunday night — or skip them. This directly erodes the pipeline freshness the product's best features rely on.","sub_themes":["Updating deals is too much work while selling / on calls","I only update at the end of the week","Too many fields to fill to update a deal","Data entry feels like admin, not selling"],"customers":["Atlas Freight","Bluewave Retail","Corveto Health","Everline Media"],"customer_count":4,"item_count":4,"items":[{"customer":"Everline Media","quote":"I look at my deals every single morning. But logging activity is 8 clicks and 5 fields — I batch it Sunday night or just don't.","detail":"High-effort update flow drives batching and skipped updates.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"},{"customer":"Bluewave Retail","quote":"I'm on back-to-back calls. I can glance at the deal while I'm dialing, but stopping to log every call and update the stage? No time. It piles up.","detail":"Inside sales cadence leaves no room for the current update flow.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"},{"customer":"Corveto Health","quote":"The app is great for seeing what's next. Updating it is the problem — it feels like paperwork I do after hours, not something I can do live.","detail":"Updating is perceived as after-hours admin, not part of selling.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"},{"customer":"Atlas Freight","quote":"It's that updating them mid-day is a hassle when you're never at a desk. I do it Friday, if I remember.","detail":"Mobile reps defer updates to end of week.","date":"2026-06-18","source_type":"survey","source_subject":"In-app NPS survey — June 2026"}]}]}};</script>
+
+<div class="header">
+  <div class="header-logo">◧</div>
+  <div>
+    <div class="header-title" id="hdr-title">Customer Insights</div>
+    <div class="header-subtitle">Product Overview</div>
+  </div>
+  <div class="header-info">
+    <span><span class="dot"></span> <span id="hdr-updated">—</span></span>
+  </div>
+</div>
+
+<div class="main" id="app"></div>
+
+<script>
+// ─── helpers ───
+function esc(s) {
+  if (s === null || s === undefined) return '';
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+}
+function pluralS(n) { return n === 1 ? '' : 's'; }
+
+const SOURCE_ICONS = { email: '📧', teams_chat: '💬', chat: '💬', meeting: '📅', call: '📞', user_added: '✏️' };
+
+// ─── theme (cluster) renderer ───
+function renderClusters(items, type) {
+  if (!items || !items.length) return '<p class="empty">None recorded.</p>';
+  return items.map((it, i) => {
+    const customers = it.customers || [];
+    const custCount = it.customer_count != null ? it.customer_count : customers.length;
+    const evItems = it.items || [];
+    const itemCount = it.item_count != null ? it.item_count : evItems.length;
+    const subThemes = it.sub_themes || [];
+    const evHtml = evItems.length ? `<div class="evidence-section">
+        <div class="ev-label">📋 Evidence (${evItems.length})</div>
+        ${evItems.map(ev => {
+          const icon = SOURCE_ICONS[ev.source_type] || '📄';
+          const label = ev.source_subject || (ev.source_type || '').replace('_', ' ');
+          return `<div class="evidence-row">
+            <div class="ev-source">
+              <span class="ev-customer">${esc(ev.customer || '')}</span>
+              ${label ? `<span>${icon} ${esc(label)}</span>` : ''}
+              ${ev.date ? `<span>📅 ${esc(ev.date)}</span>` : ''}
+            </div>
+            ${ev.quote ? `<div class="ev-quote">"${esc(ev.quote)}"</div>` : ''}
+          </div>`;
+        }).join('')}
+      </div>` : '';
+    return `<div class="theme-item" id="th-${type}-${i}">
+      <div class="theme-header" onclick="toggleTheme('th-${type}-${i}')">
+        <div class="theme-name">${esc(it.theme)}</div>
+        <div class="theme-meta">${custCount} customer${pluralS(custCount)} · ${itemCount} item${pluralS(itemCount)}</div>
+        <div class="chevron">▸</div>
+      </div>
+      <div class="theme-detail">
+        ${it.description ? `<div class="theme-desc">${esc(it.description)}</div>` : ''}
+        ${subThemes.length > 1 ? `<div class="theme-sub"><strong>Sub-themes:</strong> ${subThemes.map(esc).join(', ')}</div>` : ''}
+        ${customers.length ? `<div class="theme-custs"><strong>Customers:</strong> ${customers.map(esc).join(', ')}</div>` : ''}
+        ${evHtml}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderGoals(goals) {
+  if (!goals || !goals.length) return '<p class="empty">None recorded.</p>';
+  const max = Math.max(...goals.map(g => (g.customer_count != null ? g.customer_count : (g.customers || []).length) || 1));
+  return goals.map(g => {
+    const n = g.customer_count != null ? g.customer_count : (g.customers || []).length;
+    return `<div class="bar-row">
+      <div class="bar-label">${esc(g.theme || g.goal)}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, Math.round((n / max) * 100))}%"></div></div>
+      <div class="bar-value">${n} customer${pluralS(n)}</div>
+    </div>`;
+  }).join('');
+}
+
+function toggleTheme(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('expanded');
+}
+
+// ─── app ───
+function render() {
+  const data = window.__DASHBOARD_DATA__;
+  const app = document.getElementById('app');
+  if (!data) {
+    app.innerHTML = `<div class="placeholder">
+      <div class="p-icon">📊</div>
+      <div class="p-title">No data embedded yet</div>
+      <div>Run build-dashboard.js with your dashboard_data.json to populate this overview.</div>
+    </div>`;
+    return;
+  }
+  const product = data.product || { name: 'Product', icon: '📊' };
+  const t = data.themes || {};
+  document.getElementById('hdr-title').textContent = product.name + ' — Customer Insights';
+  document.getElementById('hdr-updated').textContent = data.last_updated ? ('Updated ' + String(data.last_updated).slice(0, 10)) : '—';
+  document.title = product.name + ' — Customer Insights';
+
+  app.innerHTML = `<div class="fade-in">
+    ${data.executive_summary ? `<div class="card exec-card">
+      <div class="exec-head">
+        <div class="exec-name">${esc(product.icon || '📊')} ${esc(product.name)}</div>
+        <div class="exec-count"><div class="n">${data.total_customers != null ? data.total_customers : ''}</div><div class="l">Customers</div></div>
+      </div>
+      <div class="exec-body">${esc(data.executive_summary)}</div>
+    </div>` : ''}
+
+    <div class="card section-border teal">
+      <div class="card-title"><span class="icon">🎯</span> Top Goals / Use Cases</div>
+      <div class="card-subtitle">What customers are trying to accomplish</div>
+      ${renderGoals(t.goals)}
+    </div>
+
+    <div class="card section-border red">
+      <div class="card-title"><span class="icon">⚠️</span> Top Blockers</div>
+      <div class="card-subtitle">Issues preventing customers from advancing</div>
+      ${renderClusters(t.blockers, 'blocker')}
+    </div>
+
+    <div class="card section-border purple">
+      <div class="card-title"><span class="icon">💡</span> Top Feature Requests</div>
+      <div class="card-subtitle">Capabilities customers are asking for</div>
+      ${renderClusters(t.feature_requests, 'feature')}
+    </div>
+
+    <div class="grid-2">
+      <div class="card section-border green">
+        <div class="card-title"><span class="icon">👍</span> Top Positive Feedback</div>
+        ${renderClusters(t.feedback_positive, 'positive')}
+      </div>
+      <div class="card section-border amber">
+        <div class="card-title"><span class="icon">👎</span> Top Negative Feedback</div>
+        ${renderClusters(t.feedback_negative, 'negative')}
+      </div>
+    </div>
+  </div>`;
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "last_updated": "2026-07-16T12:00:00-07:00",
+  "product": { "name": "HeroForce CRM", "icon": "📊" },
+  "total_customers": 6,
+  "generated_from": ["user-feedback.json (June 2026 NPS + post-session prompts)"],
+  "executive_summary": "Customers adopt HeroForce CRM to keep a live, trustworthy pipeline while spending as little time as possible on data entry — the recurring goal across accounts is \"less admin, more selling.\" Reps at Delmar Financial and Atlas Freight describe the app as their daily pre-meeting briefing, and RevOps and leadership at Bluewave Retail and Everline Media want the forecast to be trustworthy enough to run the business on.\n\nWhat customers value is consistent and strong (NPS 47, avg rating 4.2): AI Assist is the standout, credited with cutting prep time and speeding deal prioritization at Atlas Freight and Bluewave Retail. The morning pipeline view is a daily anchor for field reps, onboarding new reps is described as painless at Corveto Health, and forecasting is called trustworthy at Everline Media once the data is in.\n\nThere are no hard adoption blockers — criticism is concentrated and specific rather than broad dissatisfaction, and no customer has threatened to stop using the product. The risk is erosion, not rejection.\n\nThe dominant negative theme is that updating deals mid-day is too much work: reps are mobile and back-to-back, and logging a call takes too many fields and clicks, so they batch updates to Friday or Sunday night — or skip them. Atlas Freight, Bluewave Retail, Corveto Health, and Everline Media all raised this independently, and it directly undercuts the pipeline freshness the product's best features depend on.\n\nThe top feature requests point straight at the fix: voice and one-tap call logging (Delmar Financial, Atlas Freight, Proseware) and AI-drafted updates the rep only has to approve (Proseware). Delivering a lightweight, hands-free update path would neutralize the loudest complaint and satisfy the most-requested capability in one move.",
+  "themes": {
+    "goals": [
+      { "theme": "Keep the pipeline current without it feeling like admin", "customers": ["Atlas Freight", "Bluewave Retail", "Corveto Health", "Delmar Financial", "Everline Media", "Proseware"], "customer_count": 6 },
+      { "theme": "Close deals faster with accurate AI prioritization", "customers": ["Atlas Freight", "Bluewave Retail"], "customer_count": 2 },
+      { "theme": "Trustworthy forecasting leadership can run the business on", "customers": ["Bluewave Retail", "Everline Media"], "customer_count": 2 },
+      { "theme": "Onboard new reps quickly", "customers": ["Corveto Health"], "customer_count": 1 }
+    ],
+    "blockers": [],
+    "feature_requests": [
+      {
+        "theme": "Voice and one-tap call logging for reps who are never at a desk",
+        "description": "Field and territory reps at Delmar Financial, Atlas Freight, and Proseware want to log calls and update stages hands-free — by voice or a single tap — because they work from the car and between back-to-back meetings and cannot safely type into the current form while mobile.",
+        "sub_themes": ["Wish I could log a call by voice / one tap", "Update from the road / mobile", "One-tap stage change"],
+        "customers": ["Delmar Financial", "Atlas Freight", "Proseware"],
+        "customer_count": 3,
+        "item_count": 3,
+        "items": [
+          { "customer": "Delmar Financial", "quote": "I'm in my car or at client sites most of the day. I open HeroForce to see my pipeline, but I can't safely update a deal from the road. Give me a voice note and be done.", "detail": "Territory rep is mobile-only during the day and explicitly asks for hands-free voice logging.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" },
+          { "customer": "Atlas Freight", "quote": "I check my deals on my phone between meetings all day — but there's no way I'm typing a call summary into all those fields while I'm walking into the next one.", "detail": "Wants a fast, low-effort way to capture updates between meetings on mobile.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" },
+          { "customer": "Proseware", "quote": "I sell, I don't do data entry. If AI Assist could just write the update from my call and let me tap 'yes', I'd actually keep the CRM current.", "detail": "Wants one-tap confirmation instead of manual entry.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" }
+        ]
+      },
+      {
+        "theme": "AI-drafted deal updates the rep only has to approve",
+        "description": "Proseware wants AI Assist to go one step further and draft the deal update straight from the call so the rep reviews and approves rather than authoring from scratch — turning updating from a chore into a confirmation.",
+        "sub_themes": ["AI drafts the update from my call", "Approve-not-author workflow"],
+        "customers": ["Proseware"],
+        "customer_count": 1,
+        "item_count": 1,
+        "items": [
+          { "customer": "Proseware", "quote": "If AI Assist could just write the update from my call and let me tap 'yes', I'd actually keep the CRM current.", "detail": "Requests AI-generated updates gated by a single approval tap.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" }
+        ]
+      }
+    ],
+    "feedback_positive": [
+      {
+        "theme": "AI Assist is a real time-saver that speeds deal closing",
+        "description": "AI Assist is the most-praised capability. Atlas Freight says it cut prep time in half, and Bluewave Retail calls the pipeline suggestions accurate enough that the whole team switched over in a week.",
+        "sub_themes": ["AI Assist saves time", "Faster deal closing / prioritization"],
+        "customers": ["Atlas Freight", "Bluewave Retail"],
+        "customer_count": 2,
+        "item_count": 2,
+        "items": [
+          { "customer": "Atlas Freight", "quote": "AI Assist cut my prep time in half — I close more deals in a day than I used to in three.", "detail": "AI Assist credited with a large productivity gain.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" },
+          { "customer": "Bluewave Retail", "quote": "The pipeline suggestions are scary accurate. My whole team switched over in a week.", "detail": "AI-driven prioritization drove fast team adoption.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" }
+        ]
+      },
+      {
+        "theme": "The morning pipeline view is a daily anchor",
+        "description": "Field reps open the app first thing to see which deals are heating up before client visits. Delmar Financial and Atlas Freight both describe it as their pre-meeting briefing — the reason the product stuck.",
+        "sub_themes": ["Good pipeline visibility", "Morning briefing ritual"],
+        "customers": ["Delmar Financial", "Atlas Freight"],
+        "customer_count": 2,
+        "item_count": 2,
+        "items": [
+          { "customer": "Delmar Financial", "quote": "Love opening the app in the morning and seeing exactly which deals are heating up.", "detail": "Morning pipeline view used as a daily prioritization ritual.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" },
+          { "customer": "Atlas Freight", "quote": "Nothing wrong with finding my deals — they're right there when I log in.", "detail": "Pipeline visibility on login works well even for a mobile rep.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" }
+        ]
+      },
+      {
+        "theme": "Painless onboarding and trustworthy forecasting",
+        "description": "Corveto Health calls it the best CRM update in years and says onboarding new reps is finally painless, while Everline Media says forecasting is trustworthy once the data is in.",
+        "sub_themes": ["Easy onboarding for new reps", "Trustworthy forecasting"],
+        "customers": ["Corveto Health", "Everline Media"],
+        "customer_count": 2,
+        "item_count": 2,
+        "items": [
+          { "customer": "Corveto Health", "quote": "Best CRM update in years. Onboarding new reps is finally painless.", "detail": "Onboarding experience praised by a VP of Sales.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" },
+          { "customer": "Everline Media", "quote": "Forecasting is finally trustworthy — when the data is in, it's gold.", "detail": "Forecast quality is strong, conditional on data freshness.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" }
+        ]
+      }
+    ],
+    "feedback_negative": [
+      {
+        "theme": "Updating deals mid-day is too much work, so reps batch it to end of week",
+        "description": "The single most common complaint. Reps at Atlas Freight, Bluewave Retail, Corveto Health, and Everline Media all say logging a call takes too many fields and clicks and can't be done live, so they defer updates to Friday or Sunday night — or skip them. This directly erodes the pipeline freshness the product's best features rely on.",
+        "sub_themes": ["Updating deals is too much work while selling / on calls", "I only update at the end of the week", "Too many fields to fill to update a deal", "Data entry feels like admin, not selling"],
+        "customers": ["Atlas Freight", "Bluewave Retail", "Corveto Health", "Everline Media"],
+        "customer_count": 4,
+        "item_count": 4,
+        "items": [
+          { "customer": "Everline Media", "quote": "I look at my deals every single morning. But logging activity is 8 clicks and 5 fields — I batch it Sunday night or just don't.", "detail": "High-effort update flow drives batching and skipped updates.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" },
+          { "customer": "Bluewave Retail", "quote": "I'm on back-to-back calls. I can glance at the deal while I'm dialing, but stopping to log every call and update the stage? No time. It piles up.", "detail": "Inside sales cadence leaves no room for the current update flow.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" },
+          { "customer": "Corveto Health", "quote": "The app is great for seeing what's next. Updating it is the problem — it feels like paperwork I do after hours, not something I can do live.", "detail": "Updating is perceived as after-hours admin, not part of selling.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" },
+          { "customer": "Atlas Freight", "quote": "It's that updating them mid-day is a hassle when you're never at a desk. I do it Friday, if I remember.", "detail": "Mobile reps defer updates to end of week.", "date": "2026-06-18", "source_type": "survey", "source_subject": "In-app NPS survey — June 2026" }
+        ]
+      }
+    ]
+  }
+}
